@@ -1,0 +1,30 @@
+Lobby music, Patrolling Enemy Death and all visual assets (sprites, tilemap, UI éléments, scripts, etc …) are original works and create by us.
+
+
+Third-Party licences:
+
+Patrol Enemy :
+Sound effect : « Patrol Enemy Sound », licenced Creative Commons CC0 :https://freesound.org/people/EricsSoundschmiede/sounds/463721/
+
+Chasing Enemy :
+Sound effect : «Chasing Enemy Sound », licenced Creative Commons CC0 : https://freesound.org/people/LilMati/sounds/658270/
+Sound effect : «Chasing Enemy Death », licenced Creative Commons CC0 : https://freesound.org/people/tonsil5/sounds/555426/
+
+Magic Spellcaster enemy :
+-Sound effect : « Projectile Impact Sound », licenced Creative Commons CC0 : https://freesound.org/people/AudioPapkin/sounds/645895/
+-Sound effect : « Projectile Launch Sound », licenced Creative Commons CC0 : https://freesound.org/people/wesleyextreme_gamer/sounds/574821/
+-Sound effect : « Magic Monster Death », licenced Creative Commons CC0 : https://freesound.org/people/Leadstarson/sounds/559621/
+-Sound effect : « Magic Monster Sound », licenced Creative Commons CC0 : https://freesound.org/people/rezidentevil/sounds/396048/
+
+Jumping Enemy :
+-Sound effect : «Jumping Enemy Death », licenced Creative Commons CC0 : https://freesound.org/people/tonsil5/sounds/555426/
+-Sound effect : «Jump Enemy Jump», licenced Creative Commons CC0 : https://freesound.org/people/InMotionAudio/sounds/702245/
+-Sound effect : «Jumping Enemy Walk », licenced Creative Commons CC0 : https://freesound.org/people/florianreichelt/sounds/459965/
+
+Musics :
+-« Music1 » , licenced under Creative Commons CC0 : https://freesound.org/people/Seth_Makes_Sounds/sounds/722425/
+-« Music2 » , licenced under Creative Commons CC0 : https://freesound.org/people/Seth_Makes_Sounds/sounds/722428/
+-« Music3 » , licenced under Creative Commons CC0 : https://freesound.org/people/Seth_Makes_Sounds/sounds/722430/
+
+All third-party assets are free for commercial use and do not require attribution.
+See https://creativecommons.org/publicdomain/zero/1.0/ for full license details.
