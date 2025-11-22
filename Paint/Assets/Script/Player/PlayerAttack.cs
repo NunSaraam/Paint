@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public GameObject paintBallPrefab;
+    public GameObject[] paintBallPrefab;
     public Transform firePoint;
+    public Transform effectPoint;
     public GaugeUI gaugeUI;
+    public GameObject[] shotEffect;
 
     private float minAngle = 10f;
     private float maxAngle = 80f;
-    private float aimValue;
 
     public float chargeSpeed = 1f;
     public float paintBallSpeed = 10f;
 
+    private GameObject currentPaintBall;
+   [SerializeField] private ParticleSystem currentEffect;
+
+    private int effentIndex = 0;
     private float gaugeValue = 0f;
     private bool isDragging = false;
 
-    private void Start()
-    {
-        
-    }
 
     private void Update()
     {
@@ -41,7 +42,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0))
         {
-                FirePaintBall();
+            FirePaintBall();
         }
     }
 
@@ -50,6 +51,7 @@ public class PlayerAttack : MonoBehaviour
         isDragging = true;
         gaugeValue = 0f;
         gaugeUI.ShowGauge(true);
+        SetRandomPanitBall();
     }
     
     void ContinuneDrag()
@@ -61,6 +63,27 @@ public class PlayerAttack : MonoBehaviour
         gaugeUI.GaugeValue(gaugeValue);             //UI 연결
     }
 
+    void SetRandomPanitBall()
+    {
+        int index = Random.Range(0, paintBallPrefab.Length);
+        currentPaintBall = paintBallPrefab[index];
+
+        if (index >= 0 && index < shotEffect.Length && shotEffect[index] != null)
+        {
+            effentIndex = index;
+            GameObject effectObj = Instantiate(shotEffect[effentIndex], effectPoint.position, Quaternion.identity);
+
+            currentEffect = effectObj.GetComponent<ParticleSystem>();
+            currentEffect.Pause();
+
+        }
+        else
+        {
+            Debug.LogWarning("선택된 shotEffect 가 null 이거나 범위를 벗어났습니다. 인스펙터를 확인하세요.");
+            currentEffect = null;
+        }
+    }
+
     void FirePaintBall()
     {
         isDragging = false;
@@ -69,9 +92,19 @@ public class PlayerAttack : MonoBehaviour
         float fireAngle = Mathf.Lerp(minAngle, maxAngle, gaugeValue);
         Vector2 direction = Quaternion.Euler(0, 0, fireAngle) * Vector2.right;
 
-        GameObject paintBall = Instantiate(paintBallPrefab, firePoint.position, Quaternion.identity);
+        GameObject paintBall = Instantiate(currentPaintBall, firePoint.position, Quaternion.identity);
         Rigidbody2D rb = paintBall.GetComponent<Rigidbody2D>();
 
         rb.velocity = direction * paintBallSpeed;
+
+        if (currentEffect != null)
+        {
+
+
+            currentEffect.transform.position = effectPoint.position;
+            currentEffect.Play();
+            
+            Destroy(currentEffect.gameObject,1f);
+        }
     }
 }
