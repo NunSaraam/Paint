@@ -64,4 +64,10 @@ public class PlayerController : MonoBehaviour
         localScale.x *= -1;
         transform.localScale = localScale;
     }
+
+    void Dead()
+    {
+        isDead = true;
+
+    }
 }
