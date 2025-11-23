@@ -30,7 +30,7 @@ public class PaintBall : MonoBehaviour
     {
         if (paintSplashPrefabs.Length == 0)
         {
-            Debug.Log("프리팹이 없음");
+            Debug.Log("프리팹이 없음");  //페인트 볼
             return;
         }
 

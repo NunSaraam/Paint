@@ -17,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
     public float chargeSpeed = 1f;
     public float paintBallSpeed = 10f;
 
+    private PlayerController pC;
     private GameObject currentPaintBall;
    [SerializeField] private ParticleSystem currentEffect;
 
@@ -26,11 +27,20 @@ public class PlayerAttack : MonoBehaviour
 
     public int paintCost = 10;
 
-
+    private void Start()
+    {
+        pC = GetComponent<PlayerController>();
+    }
     private void Update()
     {
         AttackInput();
 
+
+        if (isDragging == false)
+        {
+            pC.animator.SetBool("AttackReady", false);
+            pC.animator.SetBool("Attack", false);
+        }
     }
 
     void AttackInput()
@@ -38,6 +48,8 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             StartDrag();
+
+
         }
         else if (Input.GetMouseButton(0))
         {
@@ -45,8 +57,10 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0))
         {
+            pC.animator.SetBool("Attack", isDragging);
             TrtFire();
         }
+
     }
 
     void StartDrag()
@@ -55,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
         gaugeValue = 0f;
         gaugeUI.ShowGauge(true);
         SetRandomPanitBall();
+        pC.animator.SetBool("AttackReady", isDragging);
     }
     
     void ContinuneDrag()
@@ -121,9 +136,6 @@ public class PlayerAttack : MonoBehaviour
             currentEffect.Play();
 
             Destroy(currentEffect.gameObject, 1f);
-
-          
-
         }
     }
 

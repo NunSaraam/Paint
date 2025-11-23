@@ -161,3 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc117348f44e56545ba55838dffd953d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintSplashPrefabs:
+  - {fileID: 1936226563206396119, guid: d7c6489380b50f449aff27fcbb7b41e1, type: 3}
+  - {fileID: 715735953754014137, guid: 4a6ad1fc7d85c7c4091cfb51c58a2871, type: 3}
+  - {fileID: 2608982993866047788, guid: f3a120c94e259a940bf0041ef08f5ee4, type: 3}
+  paintColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

@@ -38,13 +38,23 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
 
+        bool isWalking = move != 0;
+        bool attack = isWalking;
+
+        animator.SetBool("IsWalking", isWalking);
+
+
         if (move > 0 && !facingRight)
         {
+
             Flip();
+
         }
         else if (move < 0 && facingRight)
         {
+
             Flip();
+
         }
     }
 
