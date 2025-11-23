@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform effectPoint;
     public GaugeUI gaugeUI;
     public GameObject[] shotEffect;
+    public PlayerPaintGauge paintGauge;
 
     private float minAngle = 10f;
     private float maxAngle = 80f;
@@ -22,6 +23,8 @@ public class PlayerAttack : MonoBehaviour
     private int effentIndex = 0;
     private float gaugeValue = 0f;
     private bool isDragging = false;
+
+    public int paintCost = 10;
 
 
     private void Update()
@@ -42,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            FirePaintBall();
+            TrtFire();
         }
     }
 
@@ -84,6 +87,19 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+
+    void TrtFire() //페인트 체크
+    {
+        if (paintGauge.UsePaint(paintCost))
+        {
+            FirePaintBall();
+        }
+        else
+        {
+            NotEnoughPaint();
+        }
+    }
+
     void FirePaintBall()
     {
         isDragging = false;
@@ -103,8 +119,17 @@ public class PlayerAttack : MonoBehaviour
 
             currentEffect.transform.position = effectPoint.position;
             currentEffect.Play();
-            
-            Destroy(currentEffect.gameObject,1f);
+
+            Destroy(currentEffect.gameObject, 1f);
+
+          
+
         }
+    }
+
+    void  NotEnoughPaint()     //페인트 부족
+    {
+        Debug.Log("페인트 부족");
+            gaugeUI.ShowGauge(false);
     }
 }
